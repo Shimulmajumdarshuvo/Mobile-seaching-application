@@ -15,21 +15,35 @@ const searchMobile = () => {
 
 const displaySearchResult = mobiles => {
     console.log(mobiles);
-    //     const searchResut = document.getElementById('search-result');
-    //     mobiles.forEach(mobile => {
-    //         const div = document.createElement('div');
-    //         div.classList.add('col');
-    //         div.innerHTML = `
-    //         <div onclick="loadMobileDetail(${mobile.brand})" class="card h-100">
-    //                 <img src="${mobile.image}" class="card-img-top" alt="...">
-    //                 <div class="card-body">
-    //                     <h5 class="card-title">${mobile.phone_name}</h5>
-    //                     <h5 class="card-title">${mobile.slug}</h5>
+    const searchResut = document.getElementById('search-result');
+    mobiles.forEach(mobile => {
 
-    //                 </div>
-    //             </div>
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+                     <div class="img rounded">
+                     <img
+                     class="w-35"
+                     src="${mobile.image}"
+                      alt="picture"
+                       />
+                     </div>
+                      <div class="card-body">
+                         <h5 class="card-title">${mobile.phone_name}</h5>
+                    <h5 class="card-title">${mobile.slug}</h5>
 
-    //         `;
+                     </div>
+                     <div class="button-container">
+                     <button  class="delete-btn btn btn-danger">Delete</button>
+                     <button onclick="teamDetails()" class="details-btn btn btn-success">Details</button>
+                  </div>
+                 </div>
+               </div>
 
-    //     })
+
+             `;
+        searchResut.appendChild(div);
+
+
+    })
 }
