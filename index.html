@@ -8,13 +8,39 @@
 
     <!-- css link  added-->
     <link rel="stylesheet" href="style.css">
+
+    <!-- bootstarp link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>Document</title>
 
 </head>
 
 <body>
 
-    <h2>Mobile Application</h2>
+    <h1 class="text-center text-info mt-3">Mobile Application</h1>
+
+    <section>
+        <div class="container">
+            <div class="input-group mb-3 w-50 mx-auto">
+                <input id="search-field" type="text" class="form-control" placeholder="Search your Mobile"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button onclick="searchMobile()" class="btn btn-outline-success" type="button"
+                    id="button-search">Search</button>
+            </div>
+
+
+        </div>
+
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+
+
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
 
     <!-- javascript link added -->
