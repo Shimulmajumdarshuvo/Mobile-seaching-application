@@ -22,7 +22,7 @@ const searchMobile = () => {
 
 
 
-    console.log(searchText);
+
 
     searchFiled.value = '';
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
@@ -34,7 +34,7 @@ const searchMobile = () => {
 }
 
 const displaySearchResult = mobiles => {
-    console.log(mobiles);
+
     const searchResut = document.getElementById('search-result');
 
     searchResut.textContent = '';
@@ -78,7 +78,7 @@ const displaySearchResult = mobiles => {
              `;
         searchResut.appendChild(div);
         const allDetailsBtn = document.getElementsByClassName("delete-btn");
-        console.log(allDetailsBtn);
+
         for (const button of allDetailsBtn) {
             button.addEventListener("click", (del) => {
 
@@ -94,7 +94,7 @@ const displaySearchResult = mobiles => {
 }
 // search moblle slug part
 const loadPhonDetails = mobileSlug => {
-    console.log(mobileSlug);
+
     const url = ` https://openapi.programming-hero.com/api/phone/${mobileSlug}`;
     fetch(url)
         .then(res => res.json())
@@ -104,12 +104,18 @@ const loadPhonDetails = mobileSlug => {
 }
 const displayPhonDetails = (data) => {
     console.log(data);
-    const phonDetails = document.getElementById('phon-details');
 
+    const phonDetails = document.getElementById('phon-details');
+    const { mainFeatures: { storage, displaySize, chipSet, memory, sensors } = {} } = data;
+    console.log(storage);
+
+    const { others: { Bluetooth, GPS, NFC, Radio, USB, WALN } = {} } = data;
+    console.log(Bluetooth,);
 
     phonDetails.textContent = '';
 
     const div = document.createElement('div');
+
 
     div.classList.add('card');
     div.innerHTML = `
@@ -128,18 +134,23 @@ const displayPhonDetails = (data) => {
                 <p class="card-title">${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
                 <hr>
                 <h5>Main Features:</h5>
-                <p class="card-title">Storage:${data.mainFeatures.storage}</p>
-                <p class="card-title">Display:${data.mainFeatures.displaySize}</p>
-                <p class="card-title">Chipset:${data.mainFeatures.chipSet}</p>
-                <p class="card-title">Memeory:${data.mainFeatures.memory}</p>
-                <p class="card-title">Sensor:${data.mainFeatures.sensors}</p>
-                <h5 class="card-title">${data.slug}</h5>
+                <p class="card-title">Storage:${storage}</p>
+                <p class="card-title">Display:${displaySize}</p>
+                <p class="card-title">Chipset:${chipSet}</p>
+                <p class="card-title">Memeory:${memory}</p>
+                <p class="card-title">Sensor:${sensors}</p>
+                
                 <hr>
                 <h5>Others Fetures</h5>
-                <p class="card-title">Blooth:${data.others.Bluetooth}</p>
-                <p class="card-title">GPS:${data.others.GPS}</p>
-                <p class="card-title">USB:${data.others.USB}</p>
-                <p class="card-title">WLAN:${data.others.WLAN}</p>
+
+                
+
+                <p class="card-title">Blooth:${Bluetooth ? Bluetooth : 'no information'}</p>
+                <p class="card-title">GPS:${GPS ? GPS : 'no information'}</p>
+                <p class="card-title">USB:${USB ? USB : 'no informaton'}</p>
+                <p class="card-title">WLAN:${WALN ? WALN : 'no informaton'}</p>
+                <p class="card-title">WLAN:${NFC ? NFC : 'no informaton'}</p>
+                <p class="card-title">WLAN:${Radio ? Radio : 'no informaton'}</p>
                 
                 
 
