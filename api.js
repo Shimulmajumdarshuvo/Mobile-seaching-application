@@ -1,7 +1,20 @@
+const toggleSpiner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
+
+
+
 const searchMobile = () => {
 
     const searchFiled = document.getElementById('search-field');
     const searchText = searchFiled.value;
+
+
+    // display spiner
+    toggleSpiner('block');
+
+
+
     console.log(searchText);
 
     searchFiled.value = '';
@@ -45,6 +58,9 @@ const displaySearchResult = mobiles => {
 
              `;
         searchResut.appendChild(div);
+
+        toggleSpiner('none');
+
 
 
     })
