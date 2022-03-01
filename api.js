@@ -1,9 +1,16 @@
+
+//spinner added function
 const toggleSpiner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
+}
+//error handling functon added
+const errorHandling = displayStyle => {
+    document.getElementById('error-handling').style.display = displayStyle;
 }
 
 
 
+//search field function in mobile
 const searchMobile = () => {
 
     const searchFiled = document.getElementById('search-field');
@@ -31,14 +38,25 @@ const displaySearchResult = mobiles => {
     const searchResut = document.getElementById('search-result');
 
     searchResut.textContent = '';
-    mobiles.forEach(mobile => {
+
+    if (mobiles == '' || mobiles == null) {
+        errorHandling('block');
+    } else {
+        errorHandling('none');
+    }
+
+    mobiles.slice(0, 20)?.forEach(mobile => {
 
         const div = document.createElement('div');
-        div.classList.add('col');
+        //div.classList.add('search-result');
+        // div.classList.add('col');
+        div.createElement.add('col-md-4');
         div.innerHTML = `
+        <div class="card p-5 bordered border mt-2">
+        
                      <div class="img rounded">
                      <img
-                     class="w-35"
+                     class="w-25"
                      src="${mobile.image}"
                       alt="picture"
                        />
@@ -65,6 +83,7 @@ const displaySearchResult = mobiles => {
 
     })
 }
+// search moblle slug part
 const loadPhonDetails = mobileSlug => {
     console.log(mobileSlug);
     const url = ` https://openapi.programming-hero.com/api/phone/${mobileSlug}`;
@@ -96,7 +115,7 @@ const displayPhonDetails = (data) => {
                 
                 <h5 class="card-title">${data.brand}</h5>
                 <h5 class="card-title">${data.name}</h5>
-                <p class="card-title">${data.releaseDate}</p>
+                <p class="card-title">${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
                 <p class="card-title">${data.mainFeatures.storage}</p>
                 <p class="card-title">${data.mainFeatures.displaySize}</p>
                 <p class="card-title">${data.mainFeatures.chipSet}</p>
@@ -111,3 +130,4 @@ const displayPhonDetails = (data) => {
     `;
     phonDetails.appendChild(div);
 }
+
