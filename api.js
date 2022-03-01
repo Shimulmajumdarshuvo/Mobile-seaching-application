@@ -34,7 +34,6 @@ const searchMobile = () => {
 }
 
 const displaySearchResult = mobiles => {
-
     const searchResut = document.getElementById('search-result');
 
     searchResut.textContent = '';
@@ -48,31 +47,27 @@ const displaySearchResult = mobiles => {
     mobiles.slice(0, 20)?.forEach(mobile => {
 
         const div = document.createElement('div');
+
         div.classList.add('search-result');
-        div.classList.add('col');
+        div.classList.add("col-md-4");
 
 
         div.innerHTML = `
-        
-        
-                     <div class="img rounded">
-                     <img
-                     class="w-50"
-                     src="${mobile.image}"
-                      alt="picture"
-                       />
-                     </div>
-                      <div class="card-body">
-                         <h5 class="card-title">Name : ${mobile.phone_name}</h5>
-                    <h5 class="card-title">Brand : ${mobile.brand}</h5>
+        <div class ="card p-4 bordered border mt-3">
+            <div class="img rounded"><img class="w-50"
+                src="${mobile.image}"alt="picture"/>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Name : ${mobile.phone_name}</h5>
+                <h5 class="card-title">Brand : ${mobile.brand}</h5>
 
-                     </div>
-                     <div class="button-container">
-                     <button  class="delete-btn btn btn-danger">Delete</button>
-                     <button onclick="loadPhonDetails('${mobile.slug}')" class="details-btn btn btn-success">Details</button>
-                  </div>
-                 </div>
-               </div>
+            </div>
+            <div class="button-container">
+                    <button  class="delete-btn btn btn-danger">Delete</button>
+                    <button onclick="loadPhonDetails('${mobile.slug}')" class="details-btn btn btn-success">Details</button>
+            </div>
+                
+        </div>
 
 
              `;
@@ -106,11 +101,12 @@ const displayPhonDetails = (data) => {
     console.log(data);
 
     const phonDetails = document.getElementById('phon-details');
+
     const { mainFeatures: { storage, displaySize, chipSet, memory, sensors } = {} } = data;
-    console.log(storage);
+
 
     const { others: { Bluetooth, GPS, NFC, Radio, USB, WALN } = {} } = data;
-    console.log(Bluetooth,);
+
 
     phonDetails.textContent = '';
 
