@@ -48,22 +48,23 @@ const displaySearchResult = mobiles => {
     mobiles.slice(0, 20)?.forEach(mobile => {
 
         const div = document.createElement('div');
-        //div.classList.add('search-result');
-        // div.classList.add('col');
-        div.createElement.add('col-md-4');
+        div.classList.add('search-result');
+        div.classList.add('col');
+
+
         div.innerHTML = `
-        <div class="card p-5 bordered border mt-2">
+        
         
                      <div class="img rounded">
                      <img
-                     class="w-25"
+                     class="w-50"
                      src="${mobile.image}"
                       alt="picture"
                        />
                      </div>
                       <div class="card-body">
-                         <h5 class="card-title">${mobile.phone_name}</h5>
-                    <h5 class="card-title">${mobile.slug}</h5>
+                         <h5 class="card-title">Name : ${mobile.phone_name}</h5>
+                    <h5 class="card-title">Brand : ${mobile.brand}</h5>
 
                      </div>
                      <div class="button-container">
@@ -76,6 +77,14 @@ const displaySearchResult = mobiles => {
 
              `;
         searchResut.appendChild(div);
+        const allDetailsBtn = document.getElementsByClassName("delete-btn");
+        console.log(allDetailsBtn);
+        for (const button of allDetailsBtn) {
+            button.addEventListener("click", (del) => {
+
+                del.target.parentNode.parentNode.style.display = "none";
+            });
+        }
 
         toggleSpiner('none');
 
@@ -113,14 +122,24 @@ const displayPhonDetails = (data) => {
     </div>
     <div class="card-body">
                 
-                <h5 class="card-title">${data.brand}</h5>
-                <h5 class="card-title">${data.name}</h5>
+                <h5 class="card-title">Brand : ${data.brand}</h5>
+                <h5 class="card-title">Name : ${data.name}</h5>
+                
                 <p class="card-title">${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
-                <p class="card-title">${data.mainFeatures.storage}</p>
-                <p class="card-title">${data.mainFeatures.displaySize}</p>
-                <p class="card-title">${data.mainFeatures.chipSet}</p>
-                <p class="card-title">${data.mainFeatures.memory}</p>
+                <hr>
+                <h5>Main Features:</h5>
+                <p class="card-title">Storage:${data.mainFeatures.storage}</p>
+                <p class="card-title">Display:${data.mainFeatures.displaySize}</p>
+                <p class="card-title">Chipset:${data.mainFeatures.chipSet}</p>
+                <p class="card-title">Memeory:${data.mainFeatures.memory}</p>
+                <p class="card-title">Sensor:${data.mainFeatures.sensors}</p>
                 <h5 class="card-title">${data.slug}</h5>
+                <hr>
+                <h5>Others Fetures</h5>
+                <p class="card-title">Blooth:${data.others.Bluetooth}</p>
+                <p class="card-title">GPS:${data.others.GPS}</p>
+                <p class="card-title">USB:${data.others.USB}</p>
+                <p class="card-title">WLAN:${data.others.WLAN}</p>
                 
                 
 
