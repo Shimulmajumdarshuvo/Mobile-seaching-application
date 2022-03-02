@@ -116,7 +116,9 @@ const displayPhonDetails = (data) => {
 
     div.classList.add('card');
     div.innerHTML = `
-                <div class="img rounded">
+
+
+                <div class="img rounded ">
                            <img class="w-35" src="${data.image}"alt="picture"/>
                 </div>
                 <div class="card-body">
@@ -124,7 +126,7 @@ const displayPhonDetails = (data) => {
                 <h5 class="card-title">Brand : ${data.brand}</h5>
                 <h5 class="card-title">Name : ${data.name}</h5>
                 
-                <p class="card-title">${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
+                <p class="card-title">Release Date: ${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
                 <hr>
                 <h5 class="text-info">Main Features:</h5>
                 <p class="card-title">Storage:${storage}</p>
@@ -134,15 +136,18 @@ const displayPhonDetails = (data) => {
                 <p class="card-title">Sensor:${sensors}</p>
                 
                 <hr>
-                <h5 class"text-info">Others Fetures</h5>
-                <p class="card-title">Blooth:${Bluetooth ? Bluetooth : 'no information'}</p>
-                <p class="card-title">GPS:${GPS ? GPS : 'no information'}</p>
-                <p class="card-title">USB:${USB ? USB : 'no informaton'}</p>
-                <p class="card-title">WALN:${WALN ? WALN : 'no informaton'}</p>
-                <p class="card-title">NFC:${NFC ? NFC : 'no informaton'}</p>
-                <p class="card-title">Radio:${Radio ? Radio : 'no informaton'}</p>
+                
+                <h5 class="text-info">Others Features:</h5>
+                <p class="card-title">Blooth : ${Bluetooth ? Bluetooth : ' No information'}</p>
+                <p class="card-title">GPS : ${GPS ? GPS : ' No information'}</p>
+                <p class="card-title">USB : ${USB ? USB : ' No informaton'}</p>
+                <p class="card-title">WALN : ${WALN ? WALN : ' No informaton'}</p>
+                <p class="card-title">NFC : ${NFC ? NFC : ' No informaton'}</p>
+                <p class="card-title">Radio : ${Radio ? Radio : ' No informaton'}</p>
 
             </div>
+
+    
 
     `;
     phonDetails.appendChild(div);

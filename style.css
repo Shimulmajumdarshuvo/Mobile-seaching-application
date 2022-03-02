@@ -1,6 +1,4 @@
-body{
-    color: chartreuse;
-}
+
 /* .search-result{
     border: 2px solid darkcyan;
     
@@ -14,6 +12,7 @@ body{
 }
 #error-handling{
     color :red;
+    font-style:oblique;
 
 
 
@@ -26,4 +25,7 @@ body{
 .details{
     width: 50px;
     color: floralwhite;
+}
+.mark-style{
+    font-style: italic;
 }
