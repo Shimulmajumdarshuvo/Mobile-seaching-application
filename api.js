@@ -20,10 +20,6 @@ const searchMobile = () => {
     // display spiner
     toggleSpiner('block');
 
-
-
-
-
     searchFiled.value = '';
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     //console.log(url);
@@ -37,6 +33,8 @@ const displaySearchResult = mobiles => {
     const searchResut = document.getElementById('search-result');
 
     searchResut.textContent = '';
+
+    //error handling function decleration part
 
     if (mobiles == '' || mobiles == null) {
         errorHandling('block');
@@ -63,8 +61,8 @@ const displaySearchResult = mobiles => {
 
             </div>
             <div class="button-container">
-                    <button  class="delete-btn btn btn-danger">Delete</button>
-                    <button onclick="loadPhonDetails('${mobile.slug}')" class="details-btn btn btn-success">Details</button>
+                    <button  class="delete-btn btn btn-danger rounded-3">Delete</button>
+                    <button onclick="loadPhonDetails('${mobile.slug}')" class="details-btn btn btn-success rounded-3">See Details</button>
             </div>
                 
         </div>
@@ -97,6 +95,8 @@ const loadPhonDetails = mobileSlug => {
 
 
 }
+
+//All single phon details part
 const displayPhonDetails = (data) => {
     console.log(data);
 
@@ -113,23 +113,20 @@ const displayPhonDetails = (data) => {
     const div = document.createElement('div');
 
 
+
     div.classList.add('card');
     div.innerHTML = `
-    <div class="img rounded">
-    <img
-    class="w-35"
-    src="${data.image}"
-     alt="picture"
-      />
-    </div>
-    <div class="card-body">
+                <div class="img rounded">
+                           <img class="w-35" src="${data.image}"alt="picture"/>
+                </div>
+                <div class="card-body">
                 
                 <h5 class="card-title">Brand : ${data.brand}</h5>
                 <h5 class="card-title">Name : ${data.name}</h5>
                 
                 <p class="card-title">${data.releaseDate ? data.releaseDate : 'No release Date found'}</p>
                 <hr>
-                <h5>Main Features:</h5>
+                <h5 class="text-info">Main Features:</h5>
                 <p class="card-title">Storage:${storage}</p>
                 <p class="card-title">Display:${displaySize}</p>
                 <p class="card-title">Chipset:${chipSet}</p>
@@ -137,19 +134,13 @@ const displayPhonDetails = (data) => {
                 <p class="card-title">Sensor:${sensors}</p>
                 
                 <hr>
-                <h5>Others Fetures</h5>
-
-                
-
+                <h5 class"text-info">Others Fetures</h5>
                 <p class="card-title">Blooth:${Bluetooth ? Bluetooth : 'no information'}</p>
                 <p class="card-title">GPS:${GPS ? GPS : 'no information'}</p>
                 <p class="card-title">USB:${USB ? USB : 'no informaton'}</p>
-                <p class="card-title">WLAN:${WALN ? WALN : 'no informaton'}</p>
-                <p class="card-title">WLAN:${NFC ? NFC : 'no informaton'}</p>
-                <p class="card-title">WLAN:${Radio ? Radio : 'no informaton'}</p>
-                
-                
-
+                <p class="card-title">WALN:${WALN ? WALN : 'no informaton'}</p>
+                <p class="card-title">NFC:${NFC ? NFC : 'no informaton'}</p>
+                <p class="card-title">Radio:${Radio ? Radio : 'no informaton'}</p>
 
             </div>
 
