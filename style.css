@@ -1,11 +1,7 @@
 
-/* .search-result{
-    border: 2px solid darkcyan;
-    
-    border-radius: 20px;
-    box-shadow: 5px 15px 20px gray;
-    background-image: linear-gradient(45deg,rgb(224, 237, 241),rgb(187, 207, 206));
-} */
+
+
+/* extra addes style in external css file */
 
 #spinner {
     display: none;
